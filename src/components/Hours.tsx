@@ -1,16 +1,19 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { hoursAtom } from "store/Time";
 
 const Hours = (): ReactElement => {
-  const [hours, setHours] = useState(0);
+  const [hours, setHours] = useRecoilState(hoursAtom);
 
   useEffect(() => {
-    const hourInterval = setInterval(
+    const hoursInterval = setInterval(
       () => setHours((prevHour) => prevHour + 1),
       3600000
     );
 
-    return () => clearInterval(hourInterval);
+    return () => clearInterval(hoursInterval);
   }, []);
+
   return <div>Hours : {hours}</div>;
 };
 

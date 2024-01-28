@@ -1,11 +1,14 @@
 import { ReactElement } from "react";
 import Clock from "./components/Clock";
+import { RecoilRoot } from "recoil";
 
 const App = (): ReactElement => {
   return (
-    <div className="App">
-      <Clock />
-    </div>
+    <RecoilRoot>
+      <div className="App">
+        <Clock />
+      </div>
+    </RecoilRoot>
   );
 };
 
