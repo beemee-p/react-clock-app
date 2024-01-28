@@ -6,13 +6,18 @@ const Seconds = (): ReactElement => {
   const [seconds, setSeconds] = useRecoilState(secondsAtom);
 
   useEffect(() => {
-    const secInterval = setInterval(() => {
-      setSeconds((prevSec) => prevSec + 1);
-    }, 1000);
-
+    const secInterval = setInterval(handleSeconds, 1000);
     return () => clearInterval(secInterval);
-  }, []);
+  });
 
+  function handleSeconds() {
+    setSeconds((prevSec) => {
+      if (prevSec >= 59) {
+        return 0;
+      }
+      return prevSec + 1;
+    });
+  }
   return <div>Seconds : {seconds}</div>;
 };
 
