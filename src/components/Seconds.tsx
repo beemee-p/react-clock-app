@@ -1,6 +1,6 @@
-import { ReactElement, useEffect } from 'react';
-import { useRecoilState } from 'recoil';
-import { secondsAtom } from 'store/Time';
+import { ReactElement, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { secondsAtom } from "store/Time";
 
 const Seconds = (): ReactElement => {
   const [seconds, setSeconds] = useRecoilState(secondsAtom);
@@ -11,7 +11,7 @@ const Seconds = (): ReactElement => {
   });
 
   function handleSeconds() {
-    setSeconds(prevSec => {
+    setSeconds((prevSec) => {
       if (prevSec >= 59) {
         return 0;
       }

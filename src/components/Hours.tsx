@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { ReactElement, useEffect } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { hoursAtom, minutesAtom } from 'store/Time';
+import { ReactElement, useEffect } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { hoursAtom, minutesAtom } from "store/Time";
 
 const Hours = (): ReactElement => {
   const minutes = useRecoilValue(minutesAtom);
@@ -12,7 +12,7 @@ const Hours = (): ReactElement => {
   }, [minutes]);
 
   function handleHours() {
-    setHours(prevHour => {
+    setHours((prevHour) => {
       if (minutes === 0) {
         if (prevHour >= 23) {
           return 0;
