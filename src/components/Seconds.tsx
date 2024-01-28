@@ -1,6 +1,7 @@
 import { ReactElement, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { secondsAtom } from "store/Time";
+import styled from "styled-components";
 
 const Seconds = (): ReactElement => {
   const [seconds, setSeconds] = useRecoilState(secondsAtom);
@@ -18,7 +19,20 @@ const Seconds = (): ReactElement => {
       return prevSec + 1;
     });
   }
-  return <div>Seconds : {seconds}</div>;
+
+  return <DivSeconds seconds={seconds}>Seconds : {seconds}</DivSeconds>;
 };
+
+const DivSeconds = styled.div<{ seconds: number }>`
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 150px);
+  width: 150px;
+  height: 2px;
+  background-color: #ff0000;
+  transform-origin: 100% 50%;
+  transition: transform 0.5s cubic-bezier(0.4, 2.5, 0.36, 2);
+  transform: ${({ seconds }) => `rotate(${(seconds * 6 + 90) % 360}deg)`};
+`;
 
 export default Seconds;
