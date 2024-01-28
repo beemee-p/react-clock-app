@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom } from 'recoil';
 
 const getCurrentTime = () => {
   const now = new Date();
@@ -9,8 +9,8 @@ const getCurrentTime = () => {
   };
 };
 
-const hoursAtom = atom({ key: "hours", default: getCurrentTime().hours });
-const minutesAtom = atom({ key: "minutes", default: getCurrentTime().minutes });
-const secondsAtom = atom({ key: "seconds", default: getCurrentTime().seconds });
+const hoursAtom = atom({ key: 'hours', default: getCurrentTime().hours });
+const minutesAtom = atom({ key: 'minutes', default: getCurrentTime().minutes });
+const secondsAtom = atom({ key: 'seconds', default: getCurrentTime().seconds });
 
 export { hoursAtom, minutesAtom, secondsAtom };
