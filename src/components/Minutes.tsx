@@ -1,7 +1,9 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { minutesAtom } from "store/Time";
 
 const Minutes = (): ReactElement => {
-  const [minutes, setMinutes] = useState(0);
+  const [minutes, setMinutes] = useRecoilState(minutesAtom);
 
   useEffect(() => {
     const minInterval = setInterval(
@@ -11,6 +13,7 @@ const Minutes = (): ReactElement => {
 
     return () => clearInterval(minInterval);
   }, []);
+
   return <div>Minutes : {minutes}</div>;
 };
 
