@@ -24,9 +24,19 @@ const Minutes = (): ReactElement => {
       return prevMin;
     });
   }
-  return <DivMinutes>Minutes : {minutes}</DivMinutes>;
+  return <DivMinutes minutes={minutes}>Minutes : {minutes}</DivMinutes>;
 };
 
-const DivMinutes = styled.div``;
+const DivMinutes = styled.div<{ minutes: number }>`
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 100px);
+  width: 100px;
+  height: 2px;
+  background-color: black;
+  transform-origin: 100% 50%;
+  transition: transform 0.5s cubic-bezier(0.4, 2.5, 0.36, 2);
+  transform: ${({ minutes }) => `rotate(${(minutes * 6 + 90) % 360}deg)`};
+`;
 
 export default Minutes;

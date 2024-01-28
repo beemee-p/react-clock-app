@@ -19,9 +19,20 @@ const Seconds = (): ReactElement => {
       return prevSec + 1;
     });
   }
-  return <DivSeconds>Seconds : {seconds}</DivSeconds>;
+
+  return <DivSeconds seconds={seconds}>Seconds : {seconds}</DivSeconds>;
 };
 
-const DivSeconds = styled.div``;
+const DivSeconds = styled.div<{ seconds: number }>`
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 150px);
+  width: 150px;
+  height: 2px;
+  background-color: #ff0000;
+  transform-origin: 100% 50%;
+  transition: transform 0.5s cubic-bezier(0.4, 2.5, 0.36, 2);
+  transform: ${({ seconds }) => `rotate(${(seconds * 6 + 90) % 360}deg)`};
+`;
 
 export default Seconds;

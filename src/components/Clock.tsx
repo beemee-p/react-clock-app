@@ -17,11 +17,13 @@ const Clock = (): ReactElement => {
 };
 
 const MainClock = styled.main`
+  position: relative;
   text-align: center;
-
+  width: 500px;
+  height: 500px;
   > img {
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    height: 100%;
   }
 `;
 

@@ -27,6 +27,8 @@ const Hours = (): ReactElement => {
   return <DivHours>Hours : {hours}</DivHours>;
 };
 
-const DivHours = styled.div``;
+const DivHours = styled.div`
+  position: absolute;
+`;
 
 export default Hours;
