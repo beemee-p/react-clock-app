@@ -1,6 +1,7 @@
 import { ReactElement, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { secondsAtom } from "store/Time";
+import styled from "styled-components";
 
 const Seconds = (): ReactElement => {
   const [seconds, setSeconds] = useRecoilState(secondsAtom);
@@ -18,7 +19,9 @@ const Seconds = (): ReactElement => {
       return prevSec + 1;
     });
   }
-  return <div>Seconds : {seconds}</div>;
+  return <DivSeconds>Seconds : {seconds}</DivSeconds>;
 };
+
+const DivSeconds = styled.div``;
 
 export default Seconds;

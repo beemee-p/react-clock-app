@@ -2,6 +2,7 @@
 import { ReactElement, useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { minutesAtom, secondsAtom } from "store/Time";
+import styled from "styled-components";
 
 const Minutes = (): ReactElement => {
   const seconds = useRecoilValue(secondsAtom);
@@ -23,7 +24,9 @@ const Minutes = (): ReactElement => {
       return prevMin;
     });
   }
-  return <div>Minutes : {minutes}</div>;
+  return <DivMinutes>Minutes : {minutes}</DivMinutes>;
 };
+
+const DivMinutes = styled.div``;
 
 export default Minutes;
