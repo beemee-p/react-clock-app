@@ -30,8 +30,8 @@ const Minutes = (): ReactElement => {
 const DivMinutes = styled.div<{ minutes: number }>`
   position: absolute;
   top: 50%;
-  left: calc(50% - 100px);
-  width: 100px;
+  left: calc(50% - 180px);
+  width: 180px;
   height: 2px;
   background-color: black;
   transform-origin: 100% 50%;

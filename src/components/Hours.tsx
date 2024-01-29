@@ -24,10 +24,19 @@ const Hours = (): ReactElement => {
       return prevHour;
     });
   }
-  return <DivHours>Hours : {hours}</DivHours>;
+  return <DivHours hours={hours}>Hours : {hours}</DivHours>;
 };
 
-const DivHours = styled.div`
+const DivHours = styled.div<{ hours: number }>`
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 110px);
+  width: 110px;
+  height: 2px;
+  background-color: black;
+  transform-origin: 100% 50%;
+  transition: transform 0.5s cubic-bezier(0.4, 2.5, 0.36, 2);
+  transform: ${({ hours }) => `rotate(${(hours * 30 + 90) % 360}deg)`};
   position: absolute;
 `;
 
