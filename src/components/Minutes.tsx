@@ -1,33 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { ReactElement, useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { minutesAtom, secondsAtom } from "store/Time";
+import { ReactElement } from "react";
+import { useRecoilValue } from "recoil";
+import { clockRotateAtom } from "store/Rotate";
 import styled from "styled-components";
-import { getTimeDegree } from "utils/Time";
 
 const Minutes = (): ReactElement => {
-  const [minutes, setMinutes] = useRecoilState(minutesAtom);
-  const seconds = useRecoilValue(secondsAtom);
-  const degree = getTimeDegree(minutes);
+  const degree = useRecoilValue(clockRotateAtom);
 
-  useEffect(() => {
-    handleMinutes();
-  }, [seconds]);
-
-  function handleMinutes() {
-    setMinutes((prevMin) => {
-      if (seconds === 0) {
-        if (prevMin >= 59) {
-          return 0;
-        }
-        return prevMin + 1;
-      }
-
-      return prevMin;
-    });
-  }
-
-  return <DivMinutes degree={degree}>Minutes : {minutes}</DivMinutes>;
+  return <DivMinutes degree={degree.minutes} />;
 };
 
 const DivMinutes = styled.div<{ degree: number }>`
@@ -38,7 +17,6 @@ const DivMinutes = styled.div<{ degree: number }>`
   height: 2px;
   background-color: black;
   transform-origin: 100% 50%;
-  transition: transform 0.5s cubic-bezier(0.4, 2.5, 0.36, 2);
   transform: ${({ degree }) => `rotate(${degree}deg)`};
 `;
 
